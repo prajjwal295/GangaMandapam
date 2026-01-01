@@ -1,56 +1,38 @@
-const functions = require("firebase-functions");
-const nodemailer = require("nodemailer");
+import * as functions from "firebase-functions";
+import * as admin from "firebase-admin";
+import nodemailer from "nodemailer";
 
+admin.initializeApp();
+
+// 📧 Email transporter
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "gangapradam0@gmail.com",
-    pass: functions.config().gmail.pass,
+    user: "your-email@gmail.com",
+    pass: "your-app-password", // Gmail App Password
   },
 });
 
-exports.sendQueryEmail = functions.firestore
+export const onNewQuery = functions.firestore
   .document("queries/{docId}")
   .onCreate(async (snap) => {
     const data = snap.data();
 
-    const {
-      fullName,
-      email,
-      contact,
-      location,
-      date,
-      services,
-      message,
-    } = data;
-
-    await transporter.sendMail({
-      from: `"Ganga Prasadam" <gangapradam0@gmail.com>`,
-      to: "gangapradam0@gmail.com",
-      subject: "📿 New Service Query",
+    const mailOptions = {
+      from: "Ganga Prasadam <your-email@gmail.com>",
+      to: "admin@gmail.com",
+      subject: "New Ganga Prasadam Query",
       html: `
-        <p><b>Name:</b> ${fullName}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Contact:</b> ${contact}</p>
-        <p><b>Location:</b> ${location}</p>
-        <p><b>Date:</b> ${date}</p>
-        <p><b>Services:</b> ${services.join(", ")}</p>
-        <p><b>Message:</b> ${message || "—"}</p>
+        <h3>New Query Received</h3>
+        <p><strong>Name:</strong> ${data.fullName}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Contact:</strong> ${data.contact}</p>
+        <p><strong>Location:</strong> ${data.location}</p>
+        <p><strong>Date:</strong> ${data.date}</p>
+        <p><strong>Services:</strong> ${data.services.join(", ")}</p>
+        <p><strong>Message:</strong> ${data.message}</p>
       `,
-    });
+    };
 
-    /* User Email */
-    await transporter.sendMail({
-      from: `"Ganga Prasadam" <gangapradam0@gmail.com>`,
-      to: email,
-      subject: "🙏 Query Received – Ganga Prasadam",
-      html: `
-        <p>Dear ${fullName},</p>
-        <p>We have received your query for:</p>
-        <p><b>${services.join(", ")}</b></p>
-        <p>We will contact you shortly.</p>
-        <br/>
-        <p>🙏 Ganga Prasadam Team</p>
-      `,
-    });
+    await transporter.sendMail(mailOptions);
   });
