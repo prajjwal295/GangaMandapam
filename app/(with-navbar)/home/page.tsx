@@ -202,10 +202,7 @@ export default function HomePage() {
 
                   {/* Price + CTA */}
                   <div className="flex items-center justify-between mt-auto">
-                    <span className="text-lg font-semibold text-amber-700">
-                      {service.price}
-                    </span>
-
+                    <div></div>
                     <Link
                       href={`/services/${service.id}`}
                       className="inline-flex items-center px-5 py-2 rounded-md text-sm font-medium text-white shadow-sm hover:shadow-md transition-all"

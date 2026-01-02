@@ -18,11 +18,11 @@ const lato = Lato({
 });
 
 const galleryImages = [
-  "/hero.jpg",
-  "/hero.jpg",
-  "/hero.jpg",
-  "/hero.jpg",
-  "/hero.jpg",
+  "/image1.jpg",
+  "/image2.jpg",
+  "/image3.jpg",
+  "/image4.jpg",
+  "/image5.jpg",
 ];
 
 export default function AboutPage() {
@@ -46,15 +46,43 @@ export default function AboutPage() {
 
       {/* HERO */}
       <section className="relative px-6 py-28 overflow-hidden">
+                <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-full h-full opacity-20">
+            <svg
+              viewBox="0 0 200 200"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-full h-full"
+            >
+              <path
+                fill="#C47617"
+                d="M46.5,-77.5C59.1,-70.5,67.8,-55.8,74.5,-40.6C81.1,-25.5,85.8,-9.8,83.9,4.9C82.1,19.7,73.8,33.5,63.4,44.2C52.9,54.8,40.3,62.3,26.6,69C12.9,75.8,-1.9,81.7,-15.9,79.6C-29.9,77.5,-43,67.5,-53.2,55.7C-63.3,44,-70.3,30.5,-74.7,15.6C-79.1,0.6,-80.8,-15.9,-76,-29.9C-71.2,-43.9,-59.8,-55.4,-46.5,-62.3C-33.1,-69.1,-17.9,-71.3,-0.9,-69.9C16.1,-68.5,33.9,-84.5,46.5,-77.5Z"
+                transform="translate(100 100)"
+              />
+            </svg>
+          </div>
+        </div>
+
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-20 left-10 w-48 h-48 bg-[#DAA520]/10 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-64 h-64 bg-[#8B0000]/10 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-5xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 rounded-full text-sm font-medium">
-            ✦ Sanatan Seva & Vedic Rituals ✦
-          </div>
+                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 rounded-full text-sm font-medium mb-2">
+              <span className="text-amber-700">✦</span>
+              <span
+                style={{
+                  background: "linear-gradient(to right, #8B0000, #DAA520)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Sanatan Seva & Vedic Rituals
+              </span>
+              <span className="text-amber-700">✦</span>
+            </div>
+
 
           <h1
             className={`${playfairDisplay.className} text-5xl md:text-6xl lg:text-7xl font-bold`}
@@ -93,7 +121,6 @@ export default function AboutPage() {
                 alt="Vedic Puja"
                 fill
                 className="object-cover cursor-pointer"
-                onClick={() => setModalImage("/hero.jpg")}
                 priority
               />
             </div>
@@ -245,6 +272,14 @@ export default function AboutPage() {
               className="p-6 bg-white rounded-lg shadow-sm hover:shadow-lg border-2 border-[#DAA520]"
             >
               💬 Chat on WhatsApp
+            </Link>
+                      
+              <Link
+              href="https://aratt.ai/user/@gangaprasadam"
+              target="_blank"
+              className="p-6 bg-white rounded-lg shadow-sm hover:shadow-lg border-2 border-[#DAA520]"
+            >
+              💬 Chat on Arratai
             </Link>
           </div>
         </div>

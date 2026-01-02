@@ -24,7 +24,7 @@ const lato = Lato({
 /* Nav paths */
 const paths = [
   { name: "Home", path: "/home" },
-  { name: "About", path: "/about" },
+  { name: "About", path: "/about" }
 ];
 
 /* Services */
@@ -342,6 +342,18 @@ function Footer({ playfairDisplay }: { playfairDisplay: NextFont }) {
                   <img
                     src={'/whatsapp.png'}
                     alt="Whatsapp"
+                    className="w-4 h-4"
+                  >
+                  </img>
+                </a>
+                <a
+                  href="https://aratt.ai/user/@gangaprasadam"
+                  target="_blank"
+                  className="p-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-amber-100 hover:text-amber-800 transition-colors"
+                >
+                  <img
+                    src={'/arratai.png'}
+                    alt="arratai"
                     className="w-4 h-4"
                   >
                   </img>
